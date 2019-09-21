@@ -59,7 +59,7 @@ class FixedMap obeys ReadOnlyMap {
 
 ```
 
-The fixed versions of these collections can often be placed in ROM.
+On a suitable implementation such as [Moddable's XS](https://github.com/Moddable-OpenSource/moddable), the "\*Fixed" versions of these collections can often be placed in ROM. This is especially valuable for data collections such as `ArrayBuffer`.
 
 ## Shim
 
