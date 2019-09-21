@@ -4,7 +4,7 @@
 
 by Mark S. Miller (@erights) and Peter Hoddie (@phoddie)
 
-Currently JavaScript collections are unconditionally mutable. However, many use cases could benefit from separating the ability to query a collection from the ability to mutate it. Indeed, we have seen repeated calls for such support. To minimize cognitive load of new API, we propose the addition of only three to methods to all collections, and the addition of new collection classes whose APIs are only a subset of the existing collection abstractions. We propose these apply to all EcmaScript enumerable collections, i.e., all EcmaScript collections except `WeakMap` and `WeakSet`. We illustrate the general case using `Map` as a concrete example. For brevity, we refer to class-like constructors, such as `Map`, as if they are classes.
+Currently JavaScript collections are unconditionally mutable. However, many use cases could benefit from separating the ability to query a collection from the ability to mutate it. Indeed, we have seen repeated calls for such support. To minimize cognitive load of new API, we propose the addition of only three new methods to all collections, and the addition of new collection classes whose APIs are only a subset of the existing collection abstractions. We propose these apply to all EcmaScript enumerable collections, i.e., all EcmaScript collections except `WeakMap` and `WeakSet`. We illustrate the general case using `Map` as a concrete example. For brevity, we refer to class-like constructors, such as `Map`, as if they are classes.
 
 Where currently we have one `Map` class that represents the mutable variant, we would add a `FixedMap` and a `ReadOnlyMap`. To avoid polluting the global name space, we might add these classes as static members of the `Map` class.
 
@@ -66,3 +66,7 @@ The fixed versions of these collections can often be placed in ROM.
 ## Shim
 
 [Readonly Collections Shim](https://github.com/Agoric/readonly-collections-shim) is a start on a shim of this proposal.
+
+# Related
+
+This proposal is based on experience with E's [collection classes](http://erights.org/elang/collect/tables.html).
