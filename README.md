@@ -7,6 +7,7 @@ by Mark S. Miller (@erights) and Peter Hoddie (@phoddie)
 ## Status
 
 [![Presentation to TC39](readonly-miniplayer.png)](https://www.youtube.com/watch?v=N-X_4Xe9lEw&list=PLzDw4TTug5O0ywHrOz4VevVTYr6Kj_KtW)
+
 Presented to TC39 (Javascript standards committee), achieving stage 1.
 
 ## Proposal
