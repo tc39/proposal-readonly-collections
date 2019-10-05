@@ -1,8 +1,15 @@
 # proposal-readonly-collections
 
-## Proposal: snapshot,diverge,readOnlyView methods for all collections
+## `snapshot`,`diverge`,`readOnlyView` methods for all collections
 
 by Mark S. Miller (@erights) and Peter Hoddie (@phoddie)
+
+## Status
+
+[![Presentation to TC39](readonly-miniplayer.png)](https://www.youtube.com/watch?v=N-X_4Xe9lEw&list=PLzDw4TTug5O0ywHrOz4VevVTYr6Kj_KtW)
+Presented to TC39 (Javascript standards committee), achieving stage 1.
+
+## Proposal
 
 Currently JavaScript collections are unconditionally mutable. However, many use cases could benefit from separating the ability to query a collection from the ability to mutate it. Indeed, we have seen repeated calls for such support. To minimize cognitive load of new API, we propose the addition of only three new methods to all collections, and the addition of new collection classes whose APIs are only a subset of the existing collection abstractions. We propose these apply to all EcmaScript enumerable collections, i.e., all EcmaScript collections except `WeakMap` and `WeakSet`. We illustrate the general case using `Map` as a concrete example. For brevity, we refer to class-like constructors, such as `Map`, as if they are classes.
 
