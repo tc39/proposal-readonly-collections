@@ -10,6 +10,7 @@ Presented to TC39 (Javascript standards committee), achieving stage 1.
 
 [<img src="readonly-miniplayer.png" alt="Presentation to TC39" width="40%">](https://www.youtube.com/watch?v=N-X_4Xe9lEw&list=PLzDw4TTug5O0ywHrOz4VevVTYr6Kj_KtW)
 
+[Slides](https://github.com/tc39/agendas/blob/master/2019/10.readonly-collections-as-recorded.pdf)
 
 ## Proposal
 
