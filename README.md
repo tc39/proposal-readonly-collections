@@ -33,9 +33,9 @@ We illustrate the general case using `Map` as a concrete example. For brevity, w
 
 Instances of these objects add three new methods: `diverge`, `snapshot`, and `readOnlyView`.
 
-- `diverge` - Performs a shallow clone of the collection into  a new instance with the same prototype. If the original collection changes, the diverged copy does not see those changes.
-- `snapshot` - Returns a new instance of the object that that refers to the same collection, however this instance excludes any methods that would modify the collection. If the original collection changes, the snapshot sees those changes.
-- `readOnlyView` - Performs a shallow clone of the collection and returns a new instance of the object that excludes any methods that would modify the collection.
+- `diverge()` - Performs a shallow clone of the collection into  a new instance with the same prototype. If the original collection changes, the diverged copy does not see those changes.
+- `readOnlyView()` - Returns an object that that refers to the same collection, however this instance excludes any methods that would modify the collection. If the original collection changes, the snapshot sees those changes. When applied to a read-only collection (created by `readOnlyView` or `snapshot`), returns itself.
+- `snapshot()` - Performs a shallow clone of the collection and returns a new instance of the object that excludes any methods that would modify the collection. When applied to a snapshot collection (created by `snapshot()`), returns itself.
 
 Where currently we have one `Map` class that represents the mutable variant, we would add a `FixedMap` and a `ReadOnlyMap`. We add these classes as static members of the `Map` class to avoid polluting the global name space. All three of these classes would support the `snapshot`, `diverge`, and `readOnlyView` methods proposed here. In addition, `FixedMap` and `ReadOnlyMap` would support the query-only methods of `Map` but not any of the methods that would mutate a map. They have precisely the same API but different behavioral contracts.
 
@@ -96,7 +96,7 @@ class FixedMap obeys ReadOnlyMap {
 
 On a suitable implementation such as [Moddable's XS](https://github.com/Moddable-OpenSource/moddable), the "\*Fixed" versions of these collections can often be placed in ROM. This is especially valuable for data collections such as `ArrayBuffer`. The XS engine is currently able store instances of nearly all built-in objects in ROM. This proposal excludes methods that modify the instance from the object prototype. In XS, methods which would modify the collection contents throw a `TypeError` when applied to instances in ROM. The details are explained in the [XS Linker Warnings](https://github.com/Moddable-OpenSource/moddable/blob/public/documentation/xs/XS%20linker%20warnings.md#exceptions) document.
 
-This proposal does not provide a way to determine if a an object represents a read-only view on a mutable collection (e.g. a snapshot) or a read-only collection (e.g. a read only view). `Object.freeze` has `Object.isFrozen` to determine if an object has been frozen. Something analogous here seems desirable. 
+This proposal does not provide a way to determine if a an object represents a read-only view on a mutable collection (e.g. a readOnlyView) or an immutable collection (e.g. a snapshot). `Object.freeze` has `Object.isFrozen` to know if an object has been frozen. Something analogous here seems desirable. 
 
 ## Shim
 
